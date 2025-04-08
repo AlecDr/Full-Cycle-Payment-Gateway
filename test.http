@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:8080
+
+@apiKey = {{createAccount.response.body.api_key}}
+@accountId = {{createAccount.response.body.id}}
+
+### creates a new account
+# @name createAccount
+POST {{baseUrl}}/accounts
+Content-Type: application/json
+
+{
+    "name": "John Doe3",
+    "email": "john.doe3@example.com"
+}
+
+### get account by api key
+GET {{baseUrl}}/accounts
+X-API-Key: {{apiKey}}
+
+### get account by id
+GET {{baseUrl}}/accounts/{{accountId}}
