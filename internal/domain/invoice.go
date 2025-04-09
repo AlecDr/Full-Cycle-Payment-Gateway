@@ -16,23 +16,23 @@ const (
 )
 
 type Invoice struct {
-	Id             string
-	AccountId      string
-	Amount         float64
-	Status         Status
-	Description    string
-	PaymentType    string
-	CardLastDigits string
-	CreatedAt      time.Time
-	UpdatedAt      time.Time
+	Id             string    `json:"id"`
+	AccountId      string    `json:"account_id"`
+	Amount         float64   `json:"amount"`
+	Status         Status    `json:"status"`
+	Description    string    `json:"description"`
+	PaymentType    string    `json:"payment_type"`
+	CardLastDigits string    `json:"card_last_digits"`
+	CreatedAt      time.Time `json:"created_at"`
+	UpdatedAt      time.Time `json:"updated_at"`
 }
 
 type CreditCard struct {
-	Number      string
-	Cvv         string
-	ExpiryMonth int
-	ExpiryYear  int
-	HolderName  string
+	Number      string `json:"number"`
+	Cvv         string `json:"cvv"`
+	ExpiryMonth int    `json:"expiry_month"`
+	ExpiryYear  int    `json:"expiry_year"`
+	HolderName  string `json:"holder_name"`
 }
 
 func NewInvoice(accountId string, amount float64, description string, paymentType string, card *CreditCard) (*Invoice, error) {
@@ -50,6 +50,8 @@ func NewInvoice(accountId string, amount float64, description string, paymentTyp
 		Description:    description,
 		PaymentType:    paymentType,
 		CardLastDigits: lastDigits,
+		CreatedAt:      time.Now(),
+		UpdatedAt:      time.Now(),
 	}, nil
 }
 

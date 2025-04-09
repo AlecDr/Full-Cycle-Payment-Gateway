@@ -24,7 +24,10 @@ func main() {
 	accountRepository := repository.NewAccountRepository(db)
 	accountService := service.NewAccountService(accountRepository)
 
-	server := server.NewServer(os.Getenv("HTTP_PORT"), accountService)
+	invoiceRepository := repository.NewInvoiceRepository(db)
+	invoiceService := service.NewInvoiceService(invoiceRepository, accountService)
+
+	server := server.NewServer(os.Getenv("HTTP_PORT"), accountService, invoiceService)
 
 	err := server.Start()
 	if err != nil {

@@ -9,8 +9,8 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-    "name": "John Doe3",
-    "email": "john.doe3@example.com"
+    "name": "John Doe4",
+    "email": "john.doe4@example.com"
 }
 
 ### get account by api key
@@ -19,3 +19,32 @@ X-API-Key: {{apiKey}}
 
 ### get account by id
 GET {{baseUrl}}/accounts/{{accountId}}
+
+
+### creates a new invoice
+# @name createInvoice
+POST {{baseUrl}}/invoices
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "amount": 1000,
+    "description": "Test Invoice",
+    "payment_type": "credit_card",
+    "card_number": "1234567890123456",
+    "expiry_month": 12,
+    "expiry_year": 2025,
+    "cvv": "123"
+}
+
+@invoiceId = {{createInvoice.response.body.id}}
+### get invoice by id
+
+GET {{baseUrl}}/invoices/{{invoiceId}}
+X-API-Key: {{apiKey}}
+
+### get all invoices
+GET {{baseUrl}}/invoices
+X-API-Key: {{apiKey}}
+
+

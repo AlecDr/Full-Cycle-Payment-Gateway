@@ -14,26 +14,26 @@ const (
 
 type CreateInvoiceInput struct {
 	ApiKey          string
-	Amount          float64
-	Description     string
-	PaymentType     string
-	CardNumber      string
-	Cvv             string
-	ExpirationMonth int
-	ExpirationYear  int
-	HolderName      string
+	Amount          float64 `json:"amount"`
+	Description     string  `json:"description"`
+	PaymentType     string  `json:"payment_type"`
+	CardNumber      string  `json:"card_number"`
+	Cvv             string  `json:"cvv"`
+	ExpirationMonth int     `json:"expiration_month"`
+	ExpirationYear  int     `json:"expiration_year"`
+	HolderName      string  `json:"holder_name"`
 }
 
 type InvoiceOutput struct {
-	Id             string
-	AccountId      string
-	Amount         float64
-	Status         domain.Status
-	Description    string
-	PaymentType    string
-	CardLastDigits string
-	CreatedAt      time.Time
-	UpdatedAt      time.Time
+	Id             string        `json:"id"`
+	AccountId      string        `json:"account_id"`
+	Amount         float64       `json:"amount"`
+	Status         domain.Status `json:"status"`
+	Description    string        `json:"description"`
+	PaymentType    string        `json:"payment_type"`
+	CardLastDigits string        `json:"card_last_digits"`
+	CreatedAt      time.Time     `json:"created_at"`
+	UpdatedAt      time.Time     `json:"updated_at"`
 }
 
 func ToInvoice(accountId string, input *CreateInvoiceInput) (*domain.Invoice, error) {
