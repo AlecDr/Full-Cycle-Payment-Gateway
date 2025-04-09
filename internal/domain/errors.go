@@ -8,4 +8,7 @@ var (
 	ErrInvoiceNotFound     = errors.New("invoice not found")
 	ErrUnauthorizedAccess  = errors.New("unauthorized access")
 	ErrInsufficientBalance = errors.New("insufficient balance")
+
+	ErrInvalidAmount = errors.New("amount must be greater than 0")
+	ErrInvalidStatus = errors.New("invalid status")
 )
